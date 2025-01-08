@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/static/css/search.css">
+</head>
+<body>
+    <div class="results-container">
+        <h1 class="results-heading">Search Results for: "{{ query }}"</h1>
+        
+        {% if results %}
+            <ul class="results-list">
+                {% for result in results %}
+                    <li class="result-item">
+                        <a href="{{ result['link'] }}" class="result-title" target="_blank">{{ result['title'] }}</a>
+                        <p class="result-snippet">{{ result['snippet'] }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-results">No results found.</p>
+        {% endif %}
+        
+        <a href="/" class="back-btn">Back to Search</a>
+    </div>
+</body>
+</html>
